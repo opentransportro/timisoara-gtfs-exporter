@@ -39,4 +39,4 @@ jobs:
           API_URL: ${{ secrets.API_URL }}
         run: |
           echo -e "machine github.com\n  login $GH_TOKEN" > ~/.netrc
-          docker run --rm -e GH_REPO=$GH_REPO -e GH_TOKEN=$GH_TOKEN -v ${PWD}/map:/opt/gtfs-exporter/map opentransport/gtfs-exporter:latest  gtfs-process --provider=url --url=$API_URL --id=timisoara
+          docker run --rm -e GH_REPO=$GH_REPO -e GH_TOKEN=$GH_TOKEN -v ${PWD}/map:/opt/gtfs-exporter/map opentransport/gtfs-exporter:prod  gtfs-process --provider=url --url=$API_URL --id=timisoara
