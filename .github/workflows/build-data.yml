@@ -33,6 +33,10 @@ jobs:
 
       # Runs a set of commands using the runners shell
       - name: Run a multi-line script
+        env:
+          GH_REPO: ${{ secrets.GH_REPO }}
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
+          API_URL: ${{ secrets.API_URL }}
         run: |
           echo -e "machine github.com\n  login $GH_TOKEN" > ~/.netrc
           docker run --rm -e GH_REPO=$GH_REPO -e GH_TOKEN=$GH_TOKEN -v ${PWD}/map:/opt/gtfs-exporter/map opentransport/gtfs-exporter:latest  gtfs-process --provider=url --url=$API_URL --id=timisoara
